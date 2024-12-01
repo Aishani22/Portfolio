@@ -12,6 +12,7 @@ body {
   overflow-x: hidden;
   padding: 0;
   width: 100%;
+  /* background-color: #B3C8CF; */
 }
 
 div#main {
@@ -33,24 +34,117 @@ section.padding {
   padding: 5rem 0;
 }
 
-section img.background {
-  height: 100%;
-  left: 50%;
-  object-fit: cover;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, 0);
-  width: 100vmax;
-  z-index: -1;
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh;
+  max-height: 100vh; */
+  min-height: fit-content;
+  max-height: fit-content;
+  overflow: hidden;
+  position: relative;
+  /* background-color: #78B3CE; */
+  /* B3C8CF */
+  background: linear-gradient(135deg, #78B3CE, #1E3A5F);
 }
+
+/* Wrapper for text and background */
+.content-wrapper {
+  display: flex;
+  height: 100%; /* Matches the section height */
+  width: 100%; /* Matches the section width */
+  flex-direction: row;
+}
+
+.text-container {
+  flex: 3;
+  padding: 2rem;
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.image-container{
+  flex: 7;
+  /* height: 100%; */
+}
+
+section img.background {
+  padding-top: 2rem;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px){
+  .content-wrapper{
+    flex-direction: column-reverse;
+  }
+  #home{
+    /* overflow: visible; */
+    min-height: fit-content;
+    max-height: fit-content;
+    text-align: center;
+  }
+  .text-container{
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column-reverse; /* Image container above text container */
+  }
+
+  #home{
+    min-height: fit-content;
+    max-height: fit-content;
+  }
+
+  .image-container {
+    flex: none;
+    width: 100%;
+  }
+
+  section img.background {
+    padding-top: 0rem;
+  }
+
+  .text-container {
+    flex: none;
+    width: 100%;
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .text-container h1{
+    font-size: 3.5rem;
+  }
+
+  .text-container h2{
+    font-size: 1.5rem;
+  }
+
+  .text-container h1,
+  .text-container h2 {
+    line-height: 1.0; /* Maintain readability */
+    word-wrap: break-word; /* Prevent text overflow */
+    text-align: center; /* Center-align for better visuals on smaller screens */
+  }
+}
+
 
 h1 {
   font-family: "Cormorant Garamond", serif;
   font-size: 7rem;
-  font-weight: 400;
+  font-weight: 800;
   line-height: 0.8;
   margin: 0;
+  color: white;
 }
 
 h2 {
@@ -66,12 +160,101 @@ h3 {
   margin: 0;
 }
 
+h5{
+  font-weight: 600;
+  font-size: 1.10rem;
+  margin: 0;
+}
+
+.heading5{
+  margin-top: 17rem;
+  color: white;
+}
+
 p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   margin-bottom: 0;
-  font-weight: 300;
+  font-weight: 400;
 }
+
+.card-text{
+  text-align: justify;
+}
+
+.card-body{
+  background:  #c4defa;
+  position: relative;
+  background: linear-gradient(135deg,  #D4F6FF, #7AB2D3);
+}
+
+.card-img-top{
+  height: 200px;
+}
+
+/* Add a thin border and subtle shadow to the cards */
+/* Add a thin border and subtle shadow to the cards */
+.card {
+  border: 1px solid #e0e0e0; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  overflow: hidden; /* Prevent overflow of the image */
+}
+
+.card-hover, .toolsDiv {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect for the card */
+.card:hover,
+.card-hover:active  {
+  transform: translateY(-10px); /* Lift the card slightly */
+  background-color: #0056b3;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Intensify shadow */
+}
+
+/* Card image animation */
+.card img {
+  transition: transform 0.5s ease, filter 0.5s ease; /* Smooth animation for zoom and brightness */
+}
+
+/* Hover effect for the card image */
+.card:hover img {
+  transform: scale(1.1); /* Zoom the image slightly */
+  filter: brightness(1.1); /* Lighten the image */
+}
+
+/* Style for the GitHub and eye icons */
+.card-body img {
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth animation */
+  border-radius: 20px; /* Rounded corners for icons */
+}
+
+/* Hover effect for the eye icon */
+.card-body img:hover:not(.github-icon) {
+  transform: scale(1.2); /* Slightly enlarge the icon */
+  filter: brightness(0.8); /* Increase brightness */
+}
+
+/* Hover effect for the GitHub icon */
+.github-icon:hover {
+  transform: scale(1.2); /* Slightly enlarge the icon */
+  filter: brightness(0.2) contrast(1.8); /* Make the GitHub icon darker */
+}
+
+/* Click effect for icons */
+.card-body img:active {
+  transform: scale(0.9); /* Slightly shrink on click */
+  filter: brightness(0.9); /* Dim the brightness */
+  transition: transform 0.1s ease, filter 0.1s ease; /* Faster transition for click */
+}
+
+/* Smooth transition for positioning */
+.card-body div {
+  transition: all 0.3s ease;
+}
+
 
 p.large {
   font-size: 24px;
@@ -79,6 +262,27 @@ p.large {
 
 p.small {
   font-size: 15px;
+}
+
+.toolsDiv{
+  height: 3rem;
+  background-color: #1E3A5F;
+  color: white;
+  margin-top: 2rem;
+  width: 100%; /* Full width */
+  border-radius: 10px; /* Adjust the value for more or less roundness */
+  padding-left: 10px;
+  box-sizing: border-box; /* Ensures padding/border are included in the width */
+}
+
+p.smaller{
+  font-size: 13px;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tools{
+  font-weight: 600;
 }
 
 hr {
@@ -122,4 +326,331 @@ a:hover {
 img.socialIcon {
   height: 30px;
   width: 30px;
+}
+
+/* Style for the social icons */
+.socialIcon {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover and click animations */
+  cursor: pointer;
+  
+}
+
+/* Hover effect for icons */
+.socialIcon:hover {
+  transform: scale(1.2); /* Slightly enlarge the icon on hover */
+  filter: brightness(1.1); /* Brighten the icon */
+}
+
+/* Click effect for icons */
+.socialIcon:active {
+  transform: scale(0.9); /* Slightly shrink the icon on click */
+  filter: brightness(0.8); /* Dim the icon */
+  transition: transform 0.1s ease, filter 0.1s ease; /* Faster transition for click */
+}
+
+/* Optional: Add a subtle shadow around the icons */
+.socialIcon {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Default shadow */
+}
+
+.socialIcon:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+/* Smooth transition for all positioning */
+#footer a {
+  transition: all 0.3s ease;
+}
+
+.carousel-item img {
+  width: 100%; /* Ensures the image spans the full width of the carousel */
+  height: 500px; /* Set a fixed height */
+  object-fit: contain; /* Ensures the whole image is visible without cropping */
+  display: block; /* Prevents any extra space below the image */
+  margin: 0 auto; /* Centers the image horizontally */
+}
+
+/* Style for carousel control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  background-color: #1E3A5F; /* Color of the circular background */
+  border-radius: 50%; /* Makes the button circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  z-index: 5; /* Ensures buttons are above the carousel */
+}
+
+/* Change button color on hover */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #ddd; /* Light grey on hover */
+  transform: scale(1.1);
+}
+
+/* Add fade-in effect while sliding */
+.carousel-inner {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Keyframes for the fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Styling for the icons inside the buttons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: transparent;
+  width: 20px; /* Size of the icons */
+  height: 20px; /* Size of the icons */
+  background-size: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  color: black; /* Makes the icons black */
+}
+
+.text-center{
+  margin-bottom: 3rem;
+}.text-center {
+  margin-bottom: 3rem;
+  font-weight: bold; /* Makes the text bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+  animation: textFadeIn 1s ease-in-out; /* Applies an animation */
+}
+
+/* Keyframes for the animation */
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Starts from a slightly higher position */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Ends at the original position */
+  }
+}
+
+
+/* Animation for the main title */
+#home h1 {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInUp 1.5s forwards;
+  animation-delay: 0.5s; /* Delay to create a sequential effect */
+}
+
+/* Animation for the subtitle */
+#home h2 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+  animation-delay: 1s; /* Delay for a staggered effect */
+}
+
+/* Animation for the description */
+#home .heading5 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+  animation-delay: 1.5s; /* Delay to make it appear after the others */
+}
+
+/* Animation for the background image */
+#home .image-container img.background {
+  opacity: 0;
+  transform: scale(1.1);
+  animation: fadeInBackground 2s forwards;
+  animation-delay: 2s; /* Delay for background appearance */
+}
+
+/* Keyframes for the fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for the background fade-in */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Adding a hover effect to the text */
+#home h1:hover,
+#home h2:hover,
+#home .heading5:hover {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Subtle shadow on hover */
+  transform: scale(1.05); /* Slightly enlarge the text */
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+
+
+/*  */
+
+/* Container Styles */
+/* Container Styles */
+/* Container Styles */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: justify;
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
+  margin-left: 3rem;
+  margin-top: 3rem;
+  margin-right: 3rem;
+}
+
+/* Row Layout */
+.about-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 20px 0;
+}
+
+/* Left Column - Image */
+.about-image {
+  flex: 1 1 40%;
+  text-align: center;
+  margin: 10px;
+}
+
+.about-profile-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Right Column - Content */
+.about-content {
+  flex: 1 1 60%;
+  padding: 20px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 1.8em;
+  color: #1E3A5F;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+}
+
+/* Skills and Certificates Container */
+.skills-certificates-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+/* Skills Section */
+.skills {
+  flex: 1 1 48%;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.skill {
+  text-align: center;
+}
+
+.skill i {
+  font-size: 2em;
+  color: #608BC1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill i:hover {
+  transform: scale(1.2);
+  color: #133E87;
+}
+
+/* Certificates Section */
+.certificates {
+  flex: 1 1 48%;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.certificates ul {
+  list-style: none;
+  padding: 0;
+}
+
+.certificates ul li {
+  margin: 10px 0;
+}
+
+.certificates ul li a {
+  color: #133E87;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.certificates ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Floating Animation for Image */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-row {
+    flex-direction: column;
+  }
+
+  .skills-certificates-container {
+    flex-direction: column;
+  }
+
+  .certificates {
+    margin-left: 0;
+    margin-top: 20px;
+  }
 }

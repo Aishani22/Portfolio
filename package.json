@@ -4,6 +4,7 @@
   "description": "Educator JS Codespace Template",
   "source": "src/index.html",
   "homepage": "https://github.com/microsoft/codespaces-teaching-template-js#readme",
+  "type": "module",
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
